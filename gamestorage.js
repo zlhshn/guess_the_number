@@ -2,7 +2,9 @@ let rastgeleSayi = Math.ceil(Math.random() * 20);
 let mesaj = document.querySelector(".msg");
 
 let skor = 10;
-let enYüksekSkor = 0;
+let enYüksekSkor = localStorage.getItem("top-score") || 0
+
+document.querySelector(".top-score").textContent = enYüksekSkor
 
 document.querySelector(".check").addEventListener("click", () => {
   const tahmin = document.querySelector(".guess").value;
@@ -14,6 +16,8 @@ document.querySelector(".check").addEventListener("click", () => {
     document.querySelector("body").style.backgroundColor = "green";
     document.querySelector(".number").textContent = rastgeleSayi;
     if(skor>enYüksekSkor){
+          localStorage.setItem('top-score',skor)
+
           enYüksekSkor = skor
           document.querySelector('.top-score').textContent = enYüksekSkor
     }
@@ -58,3 +62,19 @@ document.querySelector('.again').onclick = ()=>{
 
 
 
+document.querySelector('.check').addEventListener('click',()=>{
+
+    tahmin = document.querySelector(".guess").value
+    const tahminSayi = parseInt(tahmin)
+
+    if(tahminSayi>=1 && tahminSayi<=20 && !isNaN(tahminSayi)){
+
+
+    }else{
+             mesaj.textContent = "Geçersiz sayi girdiniz. 1- 20 arası sayi giriniz"
+             skor++
+    }
+
+
+
+})
