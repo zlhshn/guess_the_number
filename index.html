@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Guess A Number</title>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Guess The Number</h2>
-      <p>(between 0 and 100)</p>
-      <input id="input" type="text" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    
 
-      <button id="btn" type="button">CHECK</button>
-      <button id="try" type="button">PLAY AGAİN</button>
+<header>
+    <h1>Guess My Number</h1>
+    <p class="between">(1-50)</p>
+    <button class="btn again">Again</button>
+     <div class="number">?</div>
+    
+</header>
 
-      <h3 id="message1"></h3>
-      <p id="message"></p>
-    </div>
+<main>
+    <section class="left">
+          <input type="number" class="guess">
+          <button class="btn check">Check</button>
+    </section>
+    <section class="right">
+          <p class="msg">The Game Begins...</p>
+          <p class="score-label">🎉Score: <span class="score">10</span></p>
+          <p class="top-score-label">🚀Top-Score: <span class="top-score">0</span></p>
+    </section>
+</main>
 
+
+    <!-- <script src="game.js"></script> -->
     <script src="index.js"></script>
-  </body>
+</body>
 </html>
