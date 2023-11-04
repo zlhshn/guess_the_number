@@ -34,7 +34,7 @@ buttonCheck.addEventListener('click',()=>{
         attempts++
 
         if(userGuess === randomNumber){
-            msg1.textContent = "Congrulation!"
+            msg1.textContent = "🚀Congratulations!🚀"
             msg2.textContent = `You found the numer ${randomNumber} in  ${attempts} tries `
             buttonCheck.disabled = true
             buttonCheck.style.opacity = '.6'
