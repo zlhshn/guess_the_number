@@ -13,12 +13,7 @@ body{
     
 }
 
-img{
-    position: absolute;
-    width: 200px;
-    height: 200px;
 
-}
 
 div{
    position: absolute;
@@ -26,6 +21,7 @@ div{
    left: 50%;
    transform: translate(-50%,-50%);
    text-align: center;
+  
 
 }
 
@@ -41,11 +37,11 @@ p{
     font-size: 1.4rem;
     font-weight: bold;
     color: rgb(49, 47, 49);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
 }
 
-button{
+#btn,#try{
     border: none;
    
     border-radius: 10px;
@@ -53,8 +49,12 @@ button{
     color: white;
     background-color: blueviolet;
     cursor: pointer;
-
+    margin-right: .3rem;
+    
 }
+
+
+
 
 input{
 
@@ -63,4 +63,9 @@ input{
     margin-right: 1rem;
     outline: none;
     text-align: center;
+}
+
+h3{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

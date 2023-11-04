@@ -1,76 +1,66 @@
-
 const input = document.getElementById('input')
-const button = document.querySelector('button')
-const div = document.querySelector('div')
-
-const h3 = document.createElement('h3')
-div.appendChild(h3)
-h3.style.marginTop =' 1rem'
-h3.style.marginBottom =' 1rem'
-
-const p = document.createElement('p')
-div.appendChild(p)
-p.style.marginBottom =' 1rem'
+const buttonCheck  = document.getElementById("btn")
+const tryAgain = document.getElementById('try')
+const msg1 = document.getElementById('message1')
+const msg2 = document.getElementById('message')
 
 
+const maxAttempts = 5; // 5 hak
+let randomNumber = generateRandomNumber();
+let attempts = 0;
 
-const  guessNumber=(guess)=>{
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 100) + 1;
+}
 
-const number = Math.round(Math.random() * 100);
-let counter = 1
-Number(guess)
+function startNewGame() {
+    randomNumber = generateRandomNumber()
+    attempts = 0
+    msg1.textContent =""
+    msg2.textContent =""
+    input.focus()
+    tryAgain.style.display ='none'
+}
 
-while (counter < 6){
-    if(guess == number){
-        const h3Text = document.createTextNode('BİNGO')
-        h3.appendChild(h3Text)
-        h3.remove(h3Text)
-        break
-    }
-    else if (counter == 5){
 
-        const h3Text = document.createTextNode('GAME OVER!')
-        h3.appendChild(h3Text)
-        break
-    }
-    else if (counter == 4){
-        const h3Text = document.createTextNode('LAST CHANCE')
-        h3.appendChild(h3Text)
-        if(guess>number){
-            const pText = document.createTextNode('Too high. Guess a lower number')
-           p.appendChild(pText)
-        }else{
-            const pText = document.createTextNode('Too low. Guess a higher number')
-            p.appendChild(pText)
+buttonCheck.addEventListener('click',()=>{
+
+    const userGuess = Number(input.value)
+
+    if(isNaN(userGuess) || userGuess < 1 || userGuess > 100){
+        msg1.textContent = "Please enter the number"
+    }else{
+        attempts++
+
+        if(userGuess === randomNumber){
+            msg1.textContent = "Congrulation!"
+            msg2.textContent = `You found the numer ${randomNumber} in  ${attempts} tries `
+            tryAgain.style.display ='inline'
+
+        }else if (attempts >= maxAttempts){
+            msg1.textContent = "Soryy!"
+            msg2.textContent = `Your rights are over. The correct answer is ${randomNumber}`
+            tryAgain.style.display ='inline'
+        } else if (userGuess < randomNumber){
+            msg1.textContent = `${maxAttempts- attempts} right  LEFT!`
+            msg2.textContent = "Too Low!Choose a higher number"
+            input.value = ""
+            input.focus()
+        }else {
+            msg2.textContent = "Too High!Choose a lower number"
+            msg1.textContent = `${maxAttempts- attempts} right  LEFT!`
+            input.value = ""
+            input.focus()
+
         }
-        counter++
+
+        input.value = ""
+        input.focus()
     }
-  
-    else{
-        const h3Text = document.createTextNode('GAME OVER!')
-        h3.appendChild(h3Text)
-        if(guess>number){const pText = document.createTextNode('Too high.Guess a lower number')
-        p.appendChild(pText);
-        }else{ const pText = document.createTextNode('Too low. Guess a higher number')
-        p.appendChild(pText)}
-        counter++
-    }
-
-    const playAgain = prompt("Would you like to play the game again?(Y/N)").toLowerCase()
-
-}
-
-if(playAgain==='y'){
-    guessNumber()
-}
-
-}
-
-
-
-
-
-button.addEventListener('click',()=>{
-   
-    guessNumber(input.value)
 })
+
+tryAgain.addEventListener('click',()=>{
+    startNewGame()
+})
+
+startNewGame()
