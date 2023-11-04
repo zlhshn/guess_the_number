@@ -37,12 +37,15 @@ buttonCheck.addEventListener('click',()=>{
             msg1.textContent = "Congrulation!"
             msg2.textContent = `You found the numer ${randomNumber} in  ${attempts} tries `
             buttonCheck.disabled = true
+            buttonCheck.style.opacity = '.6'
             tryAgain.style.display ='inline'
 
         }else if (attempts >= maxAttempts){
             msg1.textContent = "Soryy!"
             msg2.textContent = `Your rights are over. The correct answer is ${randomNumber}`
             buttonCheck.disabled = true
+            buttonCheck.style.opacity = '.6'
+           
             tryAgain.style.display ='inline'
         } else if (userGuess < randomNumber){
             msg1.textContent = `${maxAttempts- attempts} right  LEFT!`
@@ -59,11 +62,15 @@ buttonCheck.addEventListener('click',()=>{
 
         input.value = ""
         input.focus()
+        
     }
 })
 
 tryAgain.addEventListener('click',()=>{
     startNewGame()
+    input.value = ""
+    buttonCheck.style.opacity = '1.0'
+   
 })
 
 startNewGame()
