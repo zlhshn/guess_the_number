@@ -18,6 +18,7 @@ function startNewGame() {
     attempts = 0
     msg1.textContent =""
     msg2.textContent =""
+    buttonCheck.disabled = false
     input.focus()
     tryAgain.style.display ='none'
 }
@@ -35,11 +36,13 @@ buttonCheck.addEventListener('click',()=>{
         if(userGuess === randomNumber){
             msg1.textContent = "Congrulation!"
             msg2.textContent = `You found the numer ${randomNumber} in  ${attempts} tries `
+            buttonCheck.disabled = true
             tryAgain.style.display ='inline'
 
         }else if (attempts >= maxAttempts){
             msg1.textContent = "Soryy!"
             msg2.textContent = `Your rights are over. The correct answer is ${randomNumber}`
+            buttonCheck.disabled = true
             tryAgain.style.display ='inline'
         } else if (userGuess < randomNumber){
             msg1.textContent = `${maxAttempts- attempts} right  LEFT!`
