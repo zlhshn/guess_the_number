@@ -55,6 +55,7 @@ buttonCheck.addEventListener('click', ()=>{
         }else{
             message.textContent ="GAME OVER!😑"
             document.querySelector('body').style.backgroundColor = 'red'
+            score.textContent = 0;
             buttonCheck.style.opacity = '.6'
             buttonCheck.disabled = true
         }
